@@ -53,8 +53,7 @@ const editTask = async (req, res) => {
 
 //updating task in db
 const updateTask = async (req, res) => {
-  // assign task variable to false because will be used later to check if a task was
-  // successfully found before rendering the editTask page
+  // assign task to false assuming that no task has been found yet in db.
   let task = false;
   try {
     if (req.body.complete) {
@@ -62,7 +61,7 @@ const updateTask = async (req, res) => {
     }
     // retrieve the task from the database make sure it exists in db
     task = await Task.findById(req.params.id);
-    // update the task in the db with the specified id using the req.body as the new values
+    // update the task in the db with the specified ID using the req.body as the new values
     //run validation
     await Task.findByIdAndUpdate(req.params.id, req.body, {
       runValidators: true,
