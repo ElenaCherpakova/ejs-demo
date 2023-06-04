@@ -78,7 +78,7 @@ const updateTask = async (req, res) => {
     } else {
       res.locals.message = 'Something went wrong';
     }
-    // if task is found renders editTask
+    // if task is found renders editTask passing task as data to view
     if (task) {
       res.render('pages/editTask', { task });
     } else {
